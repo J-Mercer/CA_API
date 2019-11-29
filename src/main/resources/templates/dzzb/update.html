@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+       layout:decorator="layout">
+<head>
+    <title>电子招标投标公共服务平台</title>
+</head>
+<body>
+<div class="container "  style="margin-top: 30px;"  layout:fragment="content" >
+     <div class="panel panel-default">
+         <div class="panel-heading">
+             证书更新
+         </div>
+         <div class="panel-body">
+             <form class="form-horizontal" role="form" method="post" action="../update">
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">应用标识</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="SD190812-YY-001" name="appId">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">序列号</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"   name="certSn">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">证书有效期</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="100" name="validity">
+                     </div>
+                 </div>
+
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">证书申请请求</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" value="MIIBFDCBuQIBADBXMRAwDgYDVQQDDAcwNTE0MDAyMRwwGgYDVQQLDBNJMzcwNjg1MTk5MzA5MDE1MDAxMQswCQYDVQQHDAJqbjELMAkGA1UECAwCc2QxCzAJBgNVBAYMAkNOMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgEEMq0TiYEG0BfZceHiCI6jcHC9mdX1DmkGFbnJhmgANk8cc1uBdX/k/ogixfSzGS/mqoDpvxbFA4pAY5s29mWxjqAAMAwGCCqBHM9VAYN1BQADSAAwRQIhAPwXaGcW9uh6WJj5d+aD3/jPjf2k/AV8uvgTaHYnKO5IAiALyBoUfOw60dgF3IEeWWIBctm7VjmWIcrx4ZvMOtmPpw==" name="pkcs10">
+                     </div>
+                 </div>
+
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">公钥</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  name="doublePkcs10" value="MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEH0h8GZ1YKWQBrU6dGayVdxT5HbPgEpNHevd9/ZTVLkKHPx8WCa8eWK1n8rUMwljNHQQSDMNOqsgIkqhTQcTK+w==">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">signAlg</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  name="signAlg" value="SM3withSM2">
+                     </div>
+                 </div>
+                 <!--<div class="form-group">
+                     <label class="col-sm-2 control-label">扩展项信息</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  name="certExtends" value='[{"oid":"1.2.86.11.7.1.8", "value":"extValue1"}, {"oid":"1.2.86.11.7.1.9", "value":"extValue2"}]'>
+                     </div>
+                 </div>-->
+                 <div class="form-group">
+                     <div class="col-sm-offset-2 col-sm-10">
+                         <button type="submit" class="btn btn-default">申请</button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+       layout:decorator="layout">
+<head>
+    <title>系统参数设置</title>
+</head>
+<body>
+ <div class="container " style="margin-top: 30px;" layout:fragment="content">
+     <div class="panel panel-default">
+         <div class="panel-heading">
+             系统参数设置
+         </div>
+         <div class="panel-body">
+             <form class="form-horizontal" role="form" action="./save" method="post"  th:object="${session}">
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">签发服务API</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="${session.serviceAPI}?:'http://60.216.5.244:59202/sealCertService'" name="serviceAPI" >
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">PCS服务IP</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="${session.pcsIp}?:'60.216.5.244'" name="pcsIp">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">PCS服务端口</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="${session.pcsPort}?:'9178'" name="pcsPort">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">certID</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="${session.certID}?:'dab658c1f34564e0633701364cc7b546'" name="certID">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">certPSW</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="${session.certPSW}?:'11111111'" name="certPSW">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">SVS服务IP</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="${session.svsIp}?:'60.216.5.244'" name="svsIp">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">SVS服务端口</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="${session.svsPort}?:'9189'" name="svsPort">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">申请随机数证书</label>
+                     <div class="col-sm-10">
+                         <textarea name="randomCert" cols="100" rows="10" th:text="${session.randomCert}?:'MIICSjCCAfGgAwIBAgIIIBkFKQE3GJQwCgYIKoEcz1UBg3UwbzEaMBgGA1UEAwwRU2hhbkRvbmdTTTJUZXN0Q0ExDTALBgNVBAsMBFNEQ0ExDTALBgNVBAoMBFNEQ0ExEjAQBgNVBAcMCea1juWNl+W4gjESMBAGA1UECAwJ5bGx5Lic55yBMQswCQYDVQQGEwJDTjAeFw0xOTA1MjgxNTA4MzJaFw0yMDA1MjgxNTA4MzJaMHExGTAXBgNVBAMeEABDAEF7flPRbUuL1Xz7ft8xDTALBgNVBAsTBFNEQ0ExGzAZBgNVBAoTEjIyMS4yMTQuNS44MDo1OTIwNTEOMAwGA1UEBxMFSmluYW4xCzAJBgNVBAgTAlNEMQswCQYDVQQGEwJDTjBZMBMGByqGSM49AgEGCCqBHM9VAYItA0IABPullvnef07+vO++tUP12dwvfSOT78fElxtoOQWh1IPkr426yZIH1O2np9lGgYdrIWuPr7beZLLH3UOJEq+gngejdTBzMB8GA1UdIwQYMBaAFBxdrOHAKs5eSsyj9C8i/6Om8wTOMB0GA1UdDgQWBBSyZBbtm/W23LnM54n9/PiyxhqnzDAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIGwDAWBgNVHSUBAf8EDDAKBggrBgEFBQcDCDAKBggqgRzPVQGDdQNHADBEAiA2pPOv/vucNteu0erYSAL4xpe/AOt/CUHs0Ie1l0FAbAIgJkPzgx/svPELKHi6hh5CED6w21prkruG0vg2qbmlbNY='">
+                         </textarea>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">请求字符串</label>
+                     <div class="col-sm-10">
+                         <textarea name="req" cols="100" rows="10" th:text="${session.req}?:'MIIBFDCBuQIBADBXMRAwDgYDVQQDDAcwNTE0MDAyMRwwGgYDVQQLDBNJMzcwNjg1MTk5MzA5MDE1MDAxMQswCQYDVQQHDAJqbjELMAkGA1UECAwCc2QxCzAJBgNVBAYMAkNOMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgEEMq0TiYEG0BfZceHiCI6jcHC9mdX1DmkGFbnJhmgANk8cc1uBdX/k/ogixfSzGS/mqoDpvxbFA4pAY5s29mWxjqAAMAwGCCqBHM9VAYN1BQADSAAwRQIhAPwXaGcW9uh6WJj5d+aD3/jPjf2k/AV8uvgTaHYnKO5IAiALyBoUfOw60dgF3IEeWWIBctm7VjmWIcrx4ZvMOtmPpw=='">
+                         </textarea>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">验证签名证书</label>
+                     <div class="col-sm-10">
+                         <textarea name="signCert" cols="100" rows="10" th:text="${session.signCert}?:'MIICSjCCAfGgAwIBAgIIIBkFKQE3GJQwCgYIKoEcz1UBg3UwbzEaMBgGA1UEAwwRU2hhbkRvbmdTTTJUZXN0Q0ExDTALBgNVBAsMBFNEQ0ExDTALBgNVBAoMBFNEQ0ExEjAQBgNVBAcMCea1juWNl+W4gjESMBAGA1UECAwJ5bGx5Lic55yBMQswCQYDVQQGEwJDTjAeFw0xOTA1MjgxNTA4MzJaFw0yMDA1MjgxNTA4MzJaMHExGTAXBgNVBAMeEABDAEF7flPRbUuL1Xz7ft8xDTALBgNVBAsTBFNEQ0ExGzAZBgNVBAoTEjIyMS4yMTQuNS44MDo1OTIwNTEOMAwGA1UEBxMFSmluYW4xCzAJBgNVBAgTAlNEMQswCQYDVQQGEwJDTjBZMBMGByqGSM49AgEGCCqBHM9VAYItA0IABPullvnef07+vO++tUP12dwvfSOT78fElxtoOQWh1IPkr426yZIH1O2np9lGgYdrIWuPr7beZLLH3UOJEq+gngejdTBzMB8GA1UdIwQYMBaAFBxdrOHAKs5eSsyj9C8i/6Om8wTOMB0GA1UdDgQWBBSyZBbtm/W23LnM54n9/PiyxhqnzDAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIGwDAWBgNVHSUBAf8EDDAKBggrBgEFBQcDCDAKBggqgRzPVQGDdQNHADBEAiA2pPOv/vucNteu0erYSAL4xpe/AOt/CUHs0Ie1l0FAbAIgJkPzgx/svPELKHi6hh5CED6w21prkruG0vg2qbmlbNY='">
+                         </textarea>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <div class="col-sm-offset-2 col-sm-10">
+                         <button type="submit" class="btn btn-default">申请</button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>
+ <script type="text/javascript">
+ </script>
+</body>
+</html>

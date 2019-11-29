@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+       layout:decorator="layout">
+<head>
+    <title></title>
+</head>
+<body>
+<div class="container "  style="margin-top: 30px;"  layout:fragment="content" >
+     <div class="panel panel-default">
+         <div class="panel-heading">
+             证书新办
+         </div>
+         <div class="panel-body">
+             <form class="form-horizontal" role="form" method="post" action="../register">
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">应用标识</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="SDCA-YY-001" name="application_code">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">密码</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="111111" name="password">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">用户名称</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="${cn}" name="cn">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">证件号码</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="372330199901010000" name="ou">
+                     </div>
+                 </div>
+                <div class="form-group">
+                     <label  class="col-sm-2 control-label">区域id</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="283" name="region_id">
+                     </div>
+                 </div>
+
+                 <div class="form-group">
+                     <div class="col-sm-offset-2 col-sm-10">
+                         <button type="submit" class="btn btn-default">申请</button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>
+
+</body>
+</html>

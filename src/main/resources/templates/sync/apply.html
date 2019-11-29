@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+       layout:decorator="layout">
+<body>
+<div class="container "  style="margin-top: 30px;"  layout:fragment="content" >
+     <div class="panel panel-default">
+         <div class="panel-heading">
+             证书申请
+         </div>
+         <div class="panel-body">
+             <form class="form-horizontal" role="form" method="post" action="../apply">
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">业务类型</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="applySealCert" name="taskCode">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">协议版本号</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:value="1.0" name="version">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">随机数</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:value="${random}" name="tokenInfo">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">请求id</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="${requestID}" name="requestID">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">证书类型</label>
+                     <div class="col-sm-10">
+                         <select class="form-control " name="certType">
+                             <option value="0">个人证书</option>
+                             <option value="1">单位证书</option>
+                             <option value="2">服务器证书</option>
+                         </select>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">国家项</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  name="countryName" th:value="CN">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">组织项</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  name="organizationName" th:value="${requestID}">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">名称项</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" name="commonName" th:value="${requestID}">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">公钥</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  name="subjectPublicKeyInfo"  value="BPiHCVA+Wi05PFJtL4uIbPo6Yzs83flsRMKFlYzEChSlnV1WVrEyirWby1ZeqjUf6HrsnmJTlhDay0LcLcXeCts=">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">有效期起始时间</label>
+                     <div class="col-sm-10">
+                         <input class="form-control " size="16" type="text" name="notBefore"  value="2019-05-28 00:00:00">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">有效期结束时间</label>
+                     <div class="col-sm-10">
+                         <input class="form-control" size="16" type="text" name="notAfter" value="2020-05-31 00:00:00">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">公钥密码算法oid</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:value="1.2.156.10197.1.301" name="algorithm" >
+                     </div>
+                 </div>
+
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">签名算法oid</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:value="1.2.156.10197.1.501" name="signAlgorithm">
+                     </div>
+                 </div>
+
+                 <div class="form-group">
+                     <div class="col-sm-offset-2 col-sm-10">
+                         <button type="submit" class="btn btn-default">申请</button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+    <script>
+        $(function () {
+            let date = new Date();
+            let Year = date.getFullYear();
+            let Month = date.getMonth()+1;
+            let Day = date.getDate();
+            let Hours = date.getHours();
+            let Minutes = date.getMinutes();
+            let Seconds = date.getSeconds();
+
+            let notBefore = Year+"-"+Month+"-"+Day+" "+Hours+":"+Minutes+":"+Seconds;
+            let notAfter = (Year+1)+"-"+Month+"-"+Day+" "+Hours+":"+Minutes+":"+Seconds;
+            $("input[name='notBefore']").val(notBefore);
+            $("input[name='notAfter']").val(notAfter);
+        })
+    </script>
+ </div>
+
+</body>
+</html>

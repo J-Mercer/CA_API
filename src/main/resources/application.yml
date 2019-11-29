@@ -1,0 +1,36 @@
+server:
+  servlet:
+    context-path: /ca
+  port: 8080
+spring:
+  thymeleaf:
+    cache: false
+  spring:
+    mvc:
+      static-path-pattern: /static/**
+
+logging:
+  level:
+    com.sdca.api: info
+  file:  info.log
+ # path: ./logs
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#management:
+#  endpoint:
+#    health:
+#      show-details: always
+#  server:
+#    servlet:
+#      context-path: /cat
+#    port: 8081
+#  endpoints:
+#    web:
+#      base-path: /tom
+#      exposure:
+#        include: '*'

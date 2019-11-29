@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+       layout:decorator="layout">
+<body>
+ <div class="container-fluid"  style="margin-top: 30px;"  layout:fragment="content" >
+     <div class="panel panel-default">
+         <div class="panel-heading">
+             证书吊销
+         </div>
+         <div class="panel-body">
+             <form class="form-horizontal" role="form" method="post" action="../batchRevoke">
+                 <table class="table table-condensed">
+                     <thead>
+                         <tr>
+                             <th>请求id</th>
+                             <th>签名证书序列号</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                     <tr>
+                         <td>
+                             <input type="text" class="form-control"  th:value="${requestID}" name="data[0].requestID">
+                         </td>
+                         <td>
+                             <input type="text" class="form-control"  name="data[0].serialNumber">
+                         </td>
+
+                     </tr>
+                     <tr>
+                         <td>
+                             <input type="text" class="form-control"  th:value="${requestID}" name="data[1].requestID">
+                         </td>
+                         <td>
+                             <input type="text" class="form-control"  name="data[1].serialNumber">
+                         </td>
+
+                     </tr>
+                     </tbody>
+                 </table>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">业务类型</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="revokeSealCert" name="taskCode">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">协议版本号</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:value="1.0" name="version">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">随机数</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:value="${random}" name="tokenInfo">
+                     </div>
+                 </div>
+
+
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">签名算法oid</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:value="1.2.156.10197.1.501" name="signInfo.signAlgorithm">
+                     </div>
+                 </div>
+
+                 <div class="form-group">
+                     <div class="col-sm-offset-2 col-sm-1">
+                         <button type="submit" class="btn btn-default">申请</button>
+                     </div>
+                     <div class=" col-sm-1">
+                         <button type="button" class="btn btn-default add">添加</button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+     <script>
+         $(function () {
+             let date = new Date();
+             let Year = date.getFullYear();
+             let Month = date.getMonth()+1;
+             let Day = date.getDate();
+             let Hours = date.getHours();
+             let Minutes = date.getMinutes();
+             let Seconds = date.getSeconds();
+
+             let notBefore = Year+"-"+Month+"-"+Day+" "+Hours+":"+Minutes+":"+Seconds;
+             let notAfter = (Year+1)+"-"+Month+"-"+Day+" "+Hours+":"+Minutes+":"+Seconds;
+             $(".notBefore").val(notBefore);
+             $(".notAfter").val(notAfter);
+         })
+
+     </script>
+ </div>
+
+</body>
+</html>

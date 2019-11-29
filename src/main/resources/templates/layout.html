@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">山东CA接口测试系统</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+<!--                <li class="dropdown">-->
+<!--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">电子印章同步 <span class="caret"></span></a>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a th:href="@{/sync/page/apply}" >证书申请</a></li>-->
+<!--                        <li><a th:href="@{/sync/page/change}">证书变更</a></li>-->
+<!--                        <li><a th:href="@{/sync/page/delay}">证书延期</a></li>-->
+<!--                        <li><a th:href="@{/sync/page/revoke}">证书吊销</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">电子印章同步 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/sync/page/batchApply}" >证书申请</a></li>
+                        <li><a th:href="@{/sync/page/batchChange}">证书变更</a></li>
+                        <li><a th:href="@{/sync/page/batchDelay}">证书延期</a></li>
+                        <li><a th:href="@{/sync/page/batchRevoke}">证书吊销</a></li>
+                    </ul>
+                </li>
+<!--                <li class="dropdown">-->
+<!--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">电子印章异步 <span class="caret"></span></a>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a th:href="@{/async/page/apply}" >证书申请</a></li>-->
+<!--                        <li><a th:href="@{/async/page/batchApply}" >证书批量申请</a></li>-->
+<!--                        <li><a th:href="@{/async/page/change}">证书变更</a></li>-->
+<!--                        <li><a th:href="@{/async/page/delay}">证书延期</a></li>-->
+<!--                        <li><a th:href="@{/async/page/revoke}">证书吊销</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">电子印章异步<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/async/page/batchApply}" >证书申请</a></li>
+                        <li><a th:href="@{/async/page/batchChange}">证书变更</a></li>
+                        <li><a th:href="@{/async/page/batchDelay}">证书延期</a></li>
+                        <li><a th:href="@{/async/page/batchRevoke}">证书吊销</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">电子招标 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/dzzb/page/apply}" >证书申请</a></li>
+                        <li><a th:href="@{/dzzb/page/update}">证书变更</a></li>
+                        <li><a th:href="@{/dzzb/page/revoke}">证书吊销</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">签发系统<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/qfxt/page/register}" >证书新办</a></li>
+                        <li><a th:href="@{/qfxt/page/change}" >证书变更</a></li>
+                        <li><a th:href="@{/qfxt/page/update}" >证书更新</a></li>
+                        <li><a th:href="@{/qfxt/page/reissue}" >证书补办</a></li>
+                        <li><a th:href="@{/qfxt/page/info}" >信息获取</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a th:href="@{/setting}" class="dropdown-toggle" >参数设置</a>
+                </li>
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div layout:fragment="content"></div>
+
+
+</body>
+</html>

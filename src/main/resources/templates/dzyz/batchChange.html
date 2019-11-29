@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+       layout:decorator="layout">
+<body>
+ <div class="container-fluid"  style="margin-top: 30px;"  layout:fragment="content" >
+     <div class="panel panel-default">
+         <div class="panel-heading">
+             证书变更
+         </div>
+         <div class="panel-body">
+             <form class="form-horizontal" role="form" method="post" action="../batchChange">
+                 <table class="table table-condensed">
+                     <thead>
+                         <tr>
+                             <th>请求id</th>
+                             <th>证书类型</th>
+                             <th>证书序列号</th>
+                             <th>国家项</th>
+                             <th>组织项</th>
+                             <th>名称项</th>
+                             <th>公钥</th>
+                             <th>公钥密码算法oid</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                 </table>
+                 <div class="form-group">
+                     <label  class="col-sm-2 control-label">业务类型</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control"  th:value="changeSealCert" name="taskCode">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">协议版本号</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:value="1.0" name="version">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">随机数</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:value="${random}" name="tokenInfo">
+                     </div>
+                 </div>
+
+
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">签名算法oid</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:value="1.2.156.10197.1.501" name="signInfo.signAlgorithm">
+                     </div>
+                 </div>
+
+                 <div class="form-group">
+                     <div class="col-sm-offset-2 col-sm-1">
+                         <button type="submit" class="btn btn-default">申请</button>
+                     </div>
+                     <div class=" col-sm-1">
+                         <button type="button" class="btn btn-default add">添加</button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+     <script>
+         $(function () {
+             render(data);
+         });
+         function getDate(){
+             let date = new Date();
+             let Year = date.getFullYear();
+             let Month = date.getMonth()+1;
+             let Day = date.getDate();
+             let Hours = date.getHours();
+             let Minutes = date.getMinutes();
+             let Seconds = date.getSeconds();
+
+             let notBefore = Year+"-"+Month+"-"+Day+" "+Hours+":"+Minutes+":"+Seconds;
+             let notAfter = (Year+1)+"-"+Month+"-"+Day+" "+Hours+":"+Minutes+":"+Seconds;
+             $(".notBefore").val(notBefore);
+             $(".notAfter").val(notAfter);
+             return {
+                 date:  Year+Month+Day,
+                 notBefore:notBefore,
+                 notAfter:notAfter,
+             }
+         }
+         var data = [
+             {
+                 "requestID":"",
+                 "certType":"0",
+                 "serialNumber":"",
+                 "countryName":"CN",
+                 "organizationName":"",
+                 "commonName":"",
+                 "subjectPublicKeyInfo":"BPiHCVA+Wi05PFJtL4uIbPo6Yzs83flsRMKFlYzEChSlnV1WVrEyirWby1ZeqjUf6HrsnmJTlhDay0LcLcXeCts=",
+                 "algorithm":"1.2.156.10197.1.301",
+             }
+         ];
+
+         function render(data){
+             let not = getDate();
+             let htmlStr = "";
+             for (let i in data) {
+                 let requestID = i + "test" + not.date + new Date().getTime();
+
+                 let tem = ` <tr>
+                         <td>
+                             <input type="text" class="form-control"  name="data[${i}].requestID" value="${requestID}">
+                         </td>
+                         <td>
+                             <select class="form-control " name="data[${i}].certType">
+                                 <option value="0">个人证书</option>
+                                 <option value="1">单位证书</option>
+                                 <option value="2">服务器证书</option>
+                             </select>
+                         </td>
+                         <td>
+                             <input type="text" class="form-control"  name="data[${i}].serialNumber" >
+                         </td>
+                         <td>
+                             <input type="text" class="form-control"  name="data[${i}].countryName" value="${data[i].countryName}">
+                         </td>
+                         <td>
+                             <input type="text" class="form-control"  name="data[${i}].organizationName"  value="${requestID}">
+                         </td>
+                         <td>
+                             <input type="text" class="form-control" name="data[${i}].commonName" value="${requestID}">
+                         </td>
+                         <td>
+                             <input type="text" class="form-control"  name="data[${i}].subjectPublicKeyInfo"  value="${data[i].subjectPublicKeyInfo}">
+                         </td>
+                         <td>
+                             <input type="text" class="form-control"  name="data[${i}].algorithm" value="${data[i].algorithm}">
+                         </td>
+                     </tr>`;
+                 htmlStr  += tem;
+             }
+             $("table tbody").html(htmlStr);
+         };
+         $('.add').on('click',function () {
+             let obj = data[0];
+             data.push(obj);
+             render(data);
+         })
+     </script>
+ </div>
+
+</body>
+</html>
